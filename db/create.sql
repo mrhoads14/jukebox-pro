@@ -1,0 +1,14 @@
+CREATE ROLE jukebox_pro_user
+WITH
+  LOGIN
+  PASSWORD 'mypass'
+  NOSUPERUSER
+  NOCREATEDB
+  NOCREATEROLE;
+
+CREATE DATABASE jukebox_pro
+WITH
+  OWNER = jukebox_pro_user
+  ENCODING = 'UTF8';
+
+REVOKE ALL ON DATABASE jukebox_pro FROM PUBLIC;
