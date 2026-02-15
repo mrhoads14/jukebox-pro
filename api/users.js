@@ -10,6 +10,7 @@ router.post(
   "/register",
   requireBody(["username", "password"]),
   async (req, res) => {
+    console.log("here's the req.body: ", req.body)
     const user = await createUser(req.body);
     const token = createToken({ id: user.id });
     res.status(201).send(token);
@@ -22,6 +23,7 @@ router.post(
   requireBody(["username", "password"]),
   async (req, res) => {
     const user = await getUserByUsernamePassword(req.body);
+    console.log("here's the user: ", user);
     if (!user) {
       res.status(401).send("Invalid username and/or password");
     }

@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node --env-file=.env server.js",
     "dev": "node --watch --env-file=.env server.js",
-    "test": "vitest",
+    "test": "vitest --bail 1",
     "db:schema": "psql -U jukebox_pro_user -h localhost -d jukebox_pro -f db/schema.sql",
     "db:seed": "node --env-file=.env db/seed.js",
     "db:reset": "npm run db:schema && npm run db:seed"

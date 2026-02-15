@@ -17,6 +17,22 @@ export const createUser = async ({ username, password }) => {
 }
 
 
+export const getUserById = async (userId) => {
+  const sql = `
+  SELECT * FROM users WHERE id = $1;
+  `;
+  try {
+    const { rows: [user] } = await db.query(sql, [userId]);
+    if (!user) {
+      return null;
+    }
+
+    return user;
+  } catch (err) {
+    console.error('error in query: ', err);
+    throw err;
+  }
+}
 
 export const getUserByUsernamePassword = async ({ username, password }) => {
   const sql = `
